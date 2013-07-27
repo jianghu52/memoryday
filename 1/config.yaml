@@ -1,0 +1,10 @@
+name: <appName>
+version: 1
+handle:
+  - rewrite:if (!is_file() && !is_dir() && path ~ "^app/webroot/(.*)") goto "app/webroot/index.php?url=$1&%{QUERY_STRING}"
+  - rewrite:if (!is_file() && !is_dir() && path ~ "(.*)") goto "app/webroot/$1?%{QUERY_STRING}"
+#cron:
+#    - description: cron test
+#      url: index.php
+#      schedule: every 43 mins
+#      timezone: Beijing
